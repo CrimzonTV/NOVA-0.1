@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101114">
+<title>NOVA • Mod Manager</title>
+<style>
+:root{color-scheme:dark;--bg:#0c0d10;--panel:#14161b;--panel2:#1a1d23;--line:#292d36;--muted:#9298a7;--text:#f4f5f8;--accent:#b6a0ff;--accent2:#8b72f5;--green:#80dfb1;--amber:#f3c879}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#25203c 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.shell{max-width:1120px;margin:auto;padding:24px 20px 96px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:30px}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#c8b8ff,#8066f4);color:#171321;font-weight:900;letter-spacing:-1px;box-shadow:0 8px 30px #9b82ff28}.wordmark{font-weight:800;letter-spacing:2.4px;font-size:18px}.submark{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}.top-actions{display:flex;gap:9px}.iconbtn,.secondary,.primary,.filter,.navbtn{border:1px solid var(--line);color:var(--text);background:#17191f;border-radius:12px;padding:10px 13px}.iconbtn{width:42px;height:42px;display:grid;place-items:center;font-size:18px}.primary{background:var(--accent);color:#171321;border-color:transparent;font-weight:750}.primary:hover{background:#c8b8ff}.secondary:hover,.iconbtn:hover,.filter:hover{border-color:#777087}.hero{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:24px}.eyebrow{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.08;letter-spacing:-1.7px;margin:7px 0 9px}.hero p{color:var(--muted);margin:0;max-width:520px}.hero .primary{white-space:nowrap;padding:13px 16px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.stat{border:1px solid var(--line);background:linear-gradient(135deg,#17191f,#121318);padding:17px;border-radius:16px}.stat-label{color:var(--muted);font-size:12px}.stat-number{font-size:26px;font-weight:750;letter-spacing:-1px;margin-top:5px}.stat-note{font-size:11px;color:#aaa3c6;margin-top:3px}.toolbar{display:flex;gap:10px;align-items:center;margin:25px 0 14px;flex-wrap:wrap}.search{flex:1;min-width:180px;position:relative}.search input{width:100%;background:#14161b;border:1px solid var(--line);border-radius:12px;color:var(--text);padding:12px 14px 12px 40px}.search span{position:absolute;left:13px;top:10px;color:var(--muted)}.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{padding:9px 12px;font-size:12px;color:var(--muted)}.filter.active{background:#29233c;border-color:#65518f;color:#e0d7ff}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:20px 0 12px}.sectionhead h2{font-size:16px;margin:0}.count{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.modcard{background:linear-gradient(145deg,#17191f,#121318);border:1px solid var(--line);border-radius:17px;padding:16px;min-width:0;transition:transform .15s,border-color .15s}.modcard:hover{border-color:#484052;transform:translateY(-1px)}.cardtop{display:flex;align-items:start;gap:12px}.modicon{width:45px;height:45px;border-radius:14px;background:#252033;color:var(--accent);display:grid;place-items:center;font-size:21px;flex-shrink:0}.modtitle{font-weight:750;font-size:15px;overflow-wrap:anywhere}.modgame{font-size:12px;color:var(--muted);margin-top:3px}.status{margin-left:auto;border:1px solid #365447;background:#172a22;color:var(--green);border-radius:99px;padding:4px 8px;font-size:10px;white-space:nowrap}.status.planned{border-color:#51452f;background:#292317;color:var(--amber)}.moddesc{color:#b0b4c0;font-size:12px;margin:14px 0;min-height:36px}.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:10px;color:#c6c1d7;background:#24232d;border:1px solid #34313e;border-radius:7px;padding:4px 7px}.cardfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid #292b32;margin-top:14px;padding-top:12px}.version{font-size:11px;color:var(--muted)}.cardactions{display:flex;gap:7px}.smallbtn{border:1px solid var(--line);background:#1a1c22;color:#ddd9e8;border-radius:9px;padding:7px 9px;font-size:11px}.smallbtn:hover{border-color:#7b6ca3}.smallbtn.star{color:var(--accent)}.empty{grid-column:1/-1;text-align:center;padding:42px 20px;border:1px dashed #3a3d46;border-radius:16px;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:5px}.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:5;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#0e0f13eF;backdrop-filter:blur(18px);border-top:1px solid #292b32;display:flex;justify-content:center;gap:8px}.navbtn{background:transparent;border-color:transparent;color:var(--muted);font-size:12px;padding:9px 18px;display:flex;align-items:center;gap:8px}.navbtn.active{background:#29233c;color:#e1d8ff;border-color:#44365e}.notice{position:fixed;top:15px;left:50%;transform:translateX(-50%);background:#24212f;border:1px solid #66558c;color:#f2edff;border-radius:12px;padding:11px 16px;z-index:20;box-shadow:0 10px 35px #0008;display:none;max-width:90vw}.modalback{position:fixed;inset:0;background:#0009;backdrop-filter:blur(5px);z-index:10;display:none;align-items:center;justify-content:center;padding:18px}.modal{width:min(500px,100%);background:#15171d;border:1px solid #343743;border-radius:20px;padding:21px;box-shadow:0 25px 80px #0008;max-height:90vh;overflow:auto}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.modalhead h2{font-size:19px;margin:0}.close{border:0;background:transparent;color:var(--muted);font-size:25px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;color:#b8bbc7}.field input,.field select,.field textarea{width:100%;background:#0f1014;border:1px solid #30333d;border-radius:10px;color:var(--text);padding:11px 12px}.field textarea{min-height:76px;resize:vertical}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.modalfoot{display:flex;justify-content:end;gap:8px;margin-top:18px}.settings-panel{border:1px solid var(--line);border-radius:16px;padding:17px;background:#15171c}.settingrow{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid #292b32}.settingrow:last-child{border-bottom:0}.settingrow small{display:block;color:var(--muted);margin-top:3px}.switch{accent-color:var(--accent);width:18px;height:18px}.footnote{font-size:11px;color:#777d8b;text-align:center;margin:25px 0 0}.hidden{display:none!important}
+@media(max-width:650px){.shell{padding:18px 14px 100px}.topbar{margin-bottom:25px}.hero{align-items:start;flex-direction:column}.hero .primary{width:100%}.stats{gap:8px}.stat{padding:12px}.stat-number{font-size:23px}.grid{grid-template-columns:1fr}.filters{width:100%}.filter{flex:1}.navbtn{padding:9px 12px}.navbtn .navtext{display:none}.formrow{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo">N</div><div><div class="wordmark">NOVA</div><div class="submark">Mod manager</div></div></div>
+    <div class="top-actions"><button class="iconbtn" id="exportBtn" title="Export library" aria-label="Export library">↗</button><button class="iconbtn" id="settingsShortcut" title="Settings" aria-label="Settings">⚙</button></div>
+  </header>
+  <section class="hero" id="hero">
+    <div><div class="eyebrow">Your mods, organized</div><h1>Game on.<br><span style="color:var(--accent)">Stay in control.</span></h1><p>A clean home for your mod library, compatibility notes, and installation plans.</p></div>
+    <button class="primary" id="addBtn">＋ Add a mod</button>
+  </section>
+  <section class="stats">
+    <div class="stat"><div class="stat-label">In your library</div><div class="stat-number" id="statTotal">03</div><div class="stat-note">Saved mod entries</div></div>
+    <div class="stat"><div class="stat-label">Ready / tracked</div><div class="stat-number" id="statReady">02</div><div class="stat-note">Marked as installed</div></div>
+    <div class="stat"><div class="stat-label">Favorites</div><div class="stat-number" id="statFav">01</div><div class="stat-note">Your quick picks</div></div>
+  </section>
+  <section id="libraryView">
+    <div class="sectionhead"><h2>Your library</h2><span class="count" id="libraryCount">3 mods</span></div>
+    <div class="toolbar">
+      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search mods or games…" autocomplete="off"></label>
+      <div class="filters" id="filters">
+        <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="installed">Installed</button><button class="filter" data-filter="planned">Planned</button><button class="filter" data-filter="favorites">★ Saved</button>
+      </div>
+    </div>
+    <div class="grid" id="modGrid"></div>
+    <p class="footnote">NOVA is a library and organizer. It does not patch game files or guarantee mod compatibility.</p>
+  </section>
+  <section id="settingsView" class="hidden">
+    <div class="sectionhead"><h2>Preferences</h2><span class="count">Local prototype</span></div>
+    <div class="settings-panel">
+      <div class="settingrow"><div><strong>Confirm before deleting</strong><small>Ask before removing a mod entry.</small></div><input class="switch" id="confirmDelete" type="checkbox" checked></div>
+      <div class="settingrow"><div><strong>Compact cards</strong><small>Use a tighter library layout.</small></div><input class="switch" id="compact" type="checkbox"></div>
+      <div class="settingrow"><div><strong>Data storage</strong><small>Your edits stay in this browser on this device.</small></div><span class="tag">Local</span></div>
+      <div style="padding-top:15px"><button class="secondary" id="resetBtn">Reset demo library</button></div>
+    </div>
+  </section>
+</div>
+<nav class="bottomnav" aria-label="Main navigation">
+  <button class="navbtn active" data-page="library"><span>▦</span><span class="navtext">Library</span></button>
+  <button class="navbtn" data-page="favorites"><span>☆</span><span class="navtext">Favorites</span></button>
+  <button class="navbtn" data-page="settings"><span>⚙</span><span class="navtext">Settings</span></button>
+</nav>
+<div class="notice" id="notice" role="status"></div>
+<div class="modalback" id="modalback">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modalhead"><h2 id="modalTitle">Add a mod</h2><button class="close" id="closeModal" aria-label="Close">×</button></div>
+    <form id="modForm">
+      <input type="hidden" id="editId">
+      <div class="field"><label for="modName">Mod name *</label><input id="modName" required maxlength="70" placeholder="e.g. Quality of Life Pack"></div>
+      <div class="formrow">
+        <div class="field"><label for="modGame">Game *</label><input id="modGame" required maxlength="50" placeholder="e.g. Among Us"></div>
+        <div class="field"><label for="modVersion">Version / build</label><input id="modVersion" maxlength="30" placeholder="e.g. 1.2.0"></div>
+      </div>
+      <div class="formrow">
+        <div class="field"><label for="modStatus">Status</label><select id="modStatus"><option value="planned">Planned</option><option value="installed">Installed / tracked</option></select></div>
+        <div class="field"><label for="modCategory">Category</label><select id="modCategory"><option>Gameplay</option><option>Quality of life</option><option>Cosmetic</option><option>Utility</option><option>Other</option></select></div>
+      </div>
+      <div class="field"><label for="modDesc">Notes</label><textarea id="modDesc" maxlength="220" placeholder="Compatibility notes, source, or setup reminders…"></textarea></div>
+      <div class="modalfoot"><button type="button" class="secondary" id="cancelModal">Cancel</button><button type="submit" class="primary">Save mod</button></div>
+    </form>
+  </div>
+</div>
+<script>
+const initialMods=[
+{id:"ehr",name:"Endless Host Roles",game:"Among Us",version:"Check game version",status:"planned",category:"Gameplay",desc:"Role-heavy mod. Check current game and launcher compatibility before setup.",favorite:true,icon:"✦"},
+{id:"starlight",name:"Starlight",game:"Among Us",version:"Installed separately",status:"installed",category:"Utility",desc:"Launcher / mod manager entry. Keep track of launcher and game versions.",favorite:false,icon:"◈"},
+{id:"qol",name:"Quality of Life Pack",game:"Geometry Dash",version:"Not specified",status:"installed",category:"Quality of life",desc:"A sample entry for organizing gameplay helpers and compatibility notes.",favorite:false,icon:"⌁"}
+];
+const KEY="nova_mod_manager_v1";
+let mods;try{mods=JSON.parse(localStorage.getItem(KEY))||structuredClone(initialMods)}catch(e){mods=initialMods.map(x=>({...x}))}
+let filter="all",page="library",searchTerm="";
+const $=id=>document.getElementById(id);
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(mods))}catch(e){}}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(msg){const n=$("notice");n.textContent=msg;n.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(()=>n.style.display="none",2400)}
+function stats(){$("statTotal").textContent=String(mods.length).padStart(2,"0");$("statReady").textContent=String(mods.filter(m=>m.status==="installed").length).padStart(2,"0");$("statFav").textContent=String(mods.filter(m=>m.favorite).length).padStart(2,"0")}
+function render(){
+ stats();
+ let list=mods.filter(m=>(page!=="favorites"||m.favorite)&&(filter==="all"||(filter==="favorites"&&m.favorite)||(filter==="installed"&&m.status==="installed")||(filter==="planned"&&m.status==="planned"))&&[m.name,m.game,m.category,m.desc].join(" ").toLowerCase().includes(searchTerm.toLowerCase()));
+ $("libraryCount").textContent=`${list.length} ${list.length===1?"mod":"mods"}`;
+ $("modGrid").innerHTML=list.length?list.map(m=>`<article class="modcard">
+ <div class="cardtop"><div class="modicon">${esc(m.icon||"✦")}</div><div style="min-width:0"><div class="modtitle">${esc(m.name)}</div><div class="modgame">${esc(m.game)}</div></div><span class="status ${m.status==="planned"?"planned":""}">${m.status==="installed"?"Tracked":"Planned"}</span></div>
+ <p class="moddesc">${esc(m.desc||"No notes added yet.")}</p><div class="tags"><span class="tag">${esc(m.category)}</span><span class="tag">${esc(m.version||"Version not set")}</span></div>
+ <div class="cardfoot"><span class="version">NOVA library entry</span><div class="cardactions"><button class="smallbtn star" data-action="favorite" data-id="${esc(m.id)}" aria-label="Toggle favorite">${m.favorite?"★ Saved":"☆ Save"}</button><button class="smallbtn" data-action="edit" data-id="${esc(m.id)}">Edit</button><button class="smallbtn" data-action="delete" data-id="${esc(m.id)}">×</button></div></div>
+ </article>`).join(""):`<div class="empty"><strong>No mods found</strong>Try another search or add a mod to your library.</div>`;
+ $("libraryView").classList.toggle("hidden",page==="settings");$("settingsView").classList.toggle("hidden",page!=="settings");
+ document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.page===page||(page==="favorites"&&b.dataset.page==="favorites")));
+ $("filters").classList.toggle("hidden",page==="favorites");
+ $("hero").classList.toggle("hidden",page==="settings");
+}
+function openModal(m){
+ $("modForm").reset();$("editId").value=m?.id||"";$("modalTitle").textContent=m?"Edit mod":"Add a mod";
+ $("modName").value=m?.name||"";$("modGame").value=m?.game||"";$("modVersion").value=m?.version||"";$("modStatus").value=m?.status||"planned";$("modCategory").value=m?.category||"Gameplay";$("modDesc").value=m?.desc||"";
+ $("modalback").style.display="flex";setTimeout(()=>$("modName").focus(),30)
+}
+function closeModal(){$("modalback").style.display="none"}
+$("addBtn").addEventListener("click",()=>openModal());$("closeModal").addEventListener("click",closeModal);$("cancelModal").addEventListener("click",closeModal);
+$("modalback").addEventListener("click",e=>{if(e.target===$("modalback"))closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+$("modForm").addEventListener("submit",e=>{
+ e.preventDefault();let id=$("editId").value;let old=mods.find(m=>m.id===id);
+ const entry={id:id||("mod-"+Date.now()),name:$("modName").value.trim(),game:$("modGame").value.trim(),version:$("modVersion").value.trim()||"Not specified",status:$("modStatus").value,category:$("modCategory").value,desc:$("modDesc").value.trim(),favorite:old?.favorite||false,icon:old?.icon||"✦"};
+ if(!entry.name||!entry.game)return;
+ if(old)mods=mods.map(m=>m.id===id?entry:m);else mods.unshift(entry);
+ persist();closeModal();render();toast(old?"Mod updated":"Mod added to your library")
+});
+$("modGrid").addEventListener("click",e=>{
+ const b=e.target.closest("button[data-action]");if(!b)return;const m=mods.find(x=>x.id===b.dataset.id);if(!m)return;
+ if(b.dataset.action==="favorite"){m.favorite=!m.favorite;persist();render();toast(m.favorite?"Added to favorites":"Removed from favorites")}
+ if(b.dataset.action==="edit")openModal(m);
+ if(b.dataset.action==="delete"){if($("confirmDelete").checked&&!confirm(`Remove "${m.name}" from your NOVA library?`))return;mods=mods.filter(x=>x.id!==m.id);persist();render();toast("Mod entry removed")}
+});
+$("search").addEventListener("input",e=>{searchTerm=e.target.value;render()});
+$("filters").addEventListener("click",e=>{const b=e.target.closest("[data-filter]");if(!b)return;filter=b.dataset.filter;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()});
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>{page=b.dataset.page;filter=page==="favorites"?"favorites":"all";document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x.dataset.filter===filter));render()}));
+$("settingsShortcut").addEventListener("click",()=>{page="settings";render()});
+$("confirmDelete").addEventListener("change",()=>toast("Delete preference updated"));
+$("compact").addEventListener("change",e=>{document.querySelectorAll(".modcard").forEach(c=>{c.style.padding=e.target.checked?"11px":"16px"});toast(e.target.checked?"Compact cards enabled":"Compact cards disabled")});
+$("resetBtn").addEventListener("click",()=>{if(confirm("Reset your library to the demo entries?")){mods=initialMods.map(x=>({...x}));persist();filter="all";page="library";$("search").value="";searchTerm="";render();toast("Demo library restored")}});
+$("exportBtn").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({app:"NOVA",version:1,mods},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="nova-mod-library.json";a.click();URL.revokeObjectURL(url);toast("Library export prepared")});
+render();
+</script>
+</body>
+</html>
